@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import data from "./data";
 function App() {
-  const [count, setCount] = useState(0);
+  let [count, setCount] = useState(0);
   const [text, setText] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let amount = parseInt(count);
-    // console.log(amount);
-    setText(data);
+    if (count <= 0) {
+      amount = 1;
+    }
+    if (count > 8) {
+      count = 8;
+    }
+    setText(data.slice(0, amount));
   };
 
   return (
